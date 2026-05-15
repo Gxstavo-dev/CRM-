@@ -1,7 +1,7 @@
 import express from "express";
 
-const routes = express.Router();
-routes.post("/login");
-routes.post("/register");
+const rutaUsuarios = express.Router();
+rutaUsuarios.post("/login");
+rutaUsuarios.post("/register");
 
-export default routes;
+export default rutaUsuarios;
