@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// definir roles
+enum Roles {
+  ADMIN
+  USER
+}
+
+// tabla usuarios
+model User {
+  id         Int      @id @default(autoincrement())
+  supabaseId String? // por si se inicia sesion con github y google
+  avatarUrl  String? // para la imagen si se inicia sesion con google o github tomaremos su imagen
+  name       String? // podria ser opcional el nombre y asi mostrar el email
+  email      String
+  password   String
+  position   String? // puesto del usuario Sr dev, PM etc
+  createdAt  DateTime @default(now()) // para guardar la fecha de creacion de la cuenta
+  role       Roles    @default(USER) // por defecto sera usuario
+}
