@@ -13,15 +13,16 @@ enum Roles {
   USER
 }
 
-// tabla usuarios
+// Tabla usuarios
 model User {
-  id         Int      @id @default(autoincrement())
-  supabaseId String? // por si se inicia sesion con github y google
-  avatarUrl  String? // para la imagen si se inicia sesion con google o github tomaremos su imagen
-  name       String? // podria ser opcional el nombre y asi mostrar el email
-  email      String
-  password   String
+  id         Int      @id @default(autoincrement()) // id del usuario. este van en auto incremento
+  supabaseId String?  @unique
+  email      String   @unique // email tiene que ser unico
+  // el simbolo de interrogacion es porque como estara el metodo de auth con github puede que no de el nombre
+  name       String? // nombre del usuario
+  password   String? // contraseña
+  avatarUrl  String?
   position   String? // puesto del usuario Sr dev, PM etc
-  createdAt  DateTime @default(now()) // para guardar la fecha de creacion de la cuenta
-  role       Roles    @default(USER) // por defecto sera usuario
+  rol        Roles    @default(USER) // definir el rol del usuario, por defecto es usuario
+  createAt   DateTime @default(now()) // registrar la fecha de creacion de la cuenta
 }
