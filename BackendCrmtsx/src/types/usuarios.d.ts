@@ -12,6 +12,6 @@ export interface Usuario {
   email: string;
   password: string;
   position?: string; // puesto del usuario Dev senior,PM etc etc
-  createdAt: string; // fecha de creacion
+  createAt: string; // fecha de creacion
   rol: ROLES; // solo tendra dos roles como admin o user por default estara en user
 }
